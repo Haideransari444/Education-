@@ -6,6 +6,7 @@ import { ExplorePage } from '../pages/ExplorePage'
 import { HomePage } from '../pages/HomePage'
 import { LessonPage } from '../pages/LessonPage'
 import { NotFoundPage } from '../pages/NotFoundPage'
+import { TopicOverviewPage } from '../pages/TopicOverviewPage'
 
 const renderRoute = (path: string) =>
   render(
@@ -17,6 +18,7 @@ const renderRoute = (path: string) =>
             children: [
               { path: '/', element: <HomePage /> },
               { path: '/explore', element: <ExplorePage /> },
+              { path: '/learn/vectors', element: <TopicOverviewPage /> },
               { path: '/learn/:lessonId', element: <LessonPage /> },
               { path: '*', element: <NotFoundPage /> },
             ],
@@ -42,6 +44,7 @@ describe('routing', () => {
   it('renders a known lesson', () => {
     renderRoute('/learn/vectors')
     expect(screen.getByRole('heading', { name: 'vectors' })).toBeInTheDocument()
+    expect(screen.getByText('26 chapters')).toBeInTheDocument()
   })
   it('renders 404 for unknown routes', () => {
     renderRoute('/missing')
@@ -54,6 +57,8 @@ describe('routing', () => {
     fireEvent.change(input, { target: { value: 'vector' } })
     fireEvent.keyDown(input, { key: 'ArrowDown' })
     fireEvent.keyDown(input, { key: 'ArrowUp' })
-    expect(screen.getByRole('option', { name: /vectors/i })).toBeInTheDocument()
+    expect(
+      screen.getByRole('option', { name: /^vectorsfoundations$/i }),
+    ).toBeInTheDocument()
   })
 })

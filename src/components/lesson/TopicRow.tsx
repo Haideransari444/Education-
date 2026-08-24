@@ -9,8 +9,7 @@ export function TopicRow({ lesson }: { lesson: Lesson }) {
       </span>
       <span className="topic-title">{lesson.title.toLowerCase()}</span>
       <span className="topic-meta">
-        {lesson.category.replace('-', ' ')} · {lesson.difficulty}{' '}
-        <b aria-hidden="true">→</b>
+        {lesson.difficulty} <b aria-hidden="true">→</b>
       </span>
     </Link>
   )

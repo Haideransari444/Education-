@@ -19,6 +19,24 @@ export const magnitude = (v: Vector2) => Math.hypot(safe(v.x), safe(v.y))
 export const dot = (a: Vector2, b: Vector2) =>
   safe(a.x) * safe(b.x) + safe(a.y) * safe(b.y)
 export const distance = (a: Vector2, b: Vector2) => magnitude(subtract(a, b))
+export const l1Norm = (v: Vector2) => Math.abs(safe(v.x)) + Math.abs(safe(v.y))
+export const l2Norm = magnitude
+export const infinityNorm = (v: Vector2) =>
+  Math.max(Math.abs(safe(v.x)), Math.abs(safe(v.y)))
+export const lpNorm = (v: Vector2, p: number) => {
+  if (p === Infinity) return infinityNorm(v)
+  if (!Number.isFinite(p) || p < 1) return 0
+  return (Math.abs(safe(v.x)) ** p + Math.abs(safe(v.y)) ** p) ** (1 / p)
+}
+export const manhattanDistance = (a: Vector2, b: Vector2) =>
+  l1Norm(subtract(a, b))
+export const euclideanDistance = distance
+export const cosineSimilarity = (a: Vector2, b: Vector2): number | null => {
+  const denominator = magnitude(a) * magnitude(b)
+  if (denominator === 0) return null
+  const result = dot(a, b) / denominator
+  return Number.isFinite(result) ? Math.max(-1, Math.min(1, result)) : null
+}
 export const normalize = (v: Vector2): Vector2 => {
   const length = magnitude(v)
   return length === 0 ? vector(0, 0) : scale(v, 1 / length)

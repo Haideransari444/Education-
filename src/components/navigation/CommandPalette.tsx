@@ -1,7 +1,6 @@
 import { useId, useState, type KeyboardEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { getCategory } from '../../curriculum/curriculum'
-import { searchLessons } from '../../curriculum/search'
+import { searchCurriculum } from '../../curriculum/search'
 
 interface CommandPaletteProps {
   open: boolean
@@ -13,12 +12,12 @@ export function CommandPalette({ open, onClose }: CommandPaletteProps) {
   const [active, setActive] = useState(0)
   const navigate = useNavigate()
   const listId = useId()
-  const results = searchLessons(query).slice(0, 7)
+  const results = searchCurriculum(query).slice(0, 8)
 
   if (!open) return null
 
-  const choose = (id: string) => {
-    navigate(`/learn/${id}`)
+  const choose = (href: string) => {
+    navigate(href)
     onClose()
   }
   const onKeyDown = (event: KeyboardEvent) => {
@@ -31,7 +30,7 @@ export function CommandPalette({ open, onClose }: CommandPaletteProps) {
       event.preventDefault()
       setActive((value) => Math.max(value - 1, 0))
     }
-    if (event.key === 'Enter' && results[active]) choose(results[active].id)
+    if (event.key === 'Enter' && results[active]) choose(results[active].href)
   }
 
   return (
@@ -75,13 +74,17 @@ export function CommandPalette({ open, onClose }: CommandPaletteProps) {
               aria-selected={index === active}
             >
               <button
-                onClick={() => choose(lesson.id)}
+                onClick={() => choose(lesson.href)}
                 onMouseEnter={() => setActive(index)}
               >
                 <span>
-                  <b>{lesson.title.toLowerCase()}</b>
+                  <b>
+                    {lesson.type === 'chapter'
+                      ? `${lesson.context} › ${lesson.title}`
+                      : lesson.title}
+                  </b>
                   <small>
-                    {getCategory(lesson.category)?.title.toLowerCase()}
+                    {lesson.type === 'chapter' ? 'chapter' : lesson.context}
                   </small>
                 </span>
                 <span aria-hidden="true">→</span>

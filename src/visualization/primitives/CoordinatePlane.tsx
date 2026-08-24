@@ -82,22 +82,26 @@ export function CoordinatePlane({
         <g className="axes">
           <line x1="0" y1={origin.y} x2={width} y2={origin.y} />
           <line x1={origin.x} y1="0" x2={origin.x} y2={height} />
-          {xTicks.filter(Boolean).map((x) => {
-            const p = toSvg({ x, y: 0 })
-            return (
-              <text key={`xt-${x}`} x={p.x} y={origin.y + 18}>
-                {x}
-              </text>
-            )
-          })}
-          {yTicks.filter(Boolean).map((y) => {
-            const p = toSvg({ x: 0, y })
-            return (
-              <text key={`yt-${y}`} x={origin.x - 9} y={p.y - 5}>
-                {y}
-              </text>
-            )
-          })}
+          {xTicks
+            .filter((x) => x !== 0 && x % 2 === 0)
+            .map((x) => {
+              const p = toSvg({ x, y: 0 })
+              return (
+                <text key={`xt-${x}`} x={p.x} y={origin.y + 18}>
+                  {x}
+                </text>
+              )
+            })}
+          {yTicks
+            .filter((y) => y !== 0 && y % 2 === 0)
+            .map((y) => {
+              const p = toSvg({ x: 0, y })
+              return (
+                <text key={`yt-${y}`} x={origin.x - 9} y={p.y - 5}>
+                  {y}
+                </text>
+              )
+            })}
           <text x={width - 14} y={origin.y - 9}>
             x
           </text>
