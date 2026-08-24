@@ -1,12 +1,18 @@
 import { Link, useParams } from 'react-router-dom'
-import { LessonTabs } from '../components/lesson/LessonTabs'
 import { getCategory, getLesson, lessons } from '../curriculum/curriculum'
+import { VectorsLesson } from '../lessons/foundations/vectors/VectorsLesson'
 import { NotFoundPage } from './NotFoundPage'
 
 export function LessonPage() {
   const { lessonId = '' } = useParams()
   const lesson = getLesson(lessonId)
   if (!lesson) return <NotFoundPage />
+  if (lesson.id === 'vectors')
+    return (
+      <article className="lesson-page">
+        <VectorsLesson />
+      </article>
+    )
   const index = lessons.indexOf(lesson)
   const previous = lessons[index - 1]
   const next = lessons[index + 1]
@@ -19,7 +25,6 @@ export function LessonPage() {
         </p>
         <h1>{lesson.title.toLowerCase()}</h1>
         <p>{lesson.description}</p>
-        <LessonTabs />
       </header>
       <section
         className="visual-placeholder"

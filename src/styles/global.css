@@ -22,6 +22,324 @@
   font-synthesis: none;
   text-rendering: optimizeLegibility;
 }
+
+/* Visualization SDK */
+.vector-lesson-content {
+  max-width: 64rem;
+  margin: 4rem auto 0;
+}
+.lesson-view {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+.lesson-copy {
+  max-width: 38rem;
+}
+.lesson-copy p {
+  color: var(--muted);
+  font-size: 0.84rem;
+  line-height: 1.8;
+}
+.lesson-copy .lesson-lead {
+  color: var(--text);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+.concept-line {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 3rem 0;
+  color: var(--text);
+  font-size: clamp(0.82rem, 2vw, 1.05rem);
+}
+.concept-line span:nth-child(2),
+.concept-link span {
+  color: var(--accent);
+}
+.equation {
+  color: var(--text) !important;
+  font-size: 1rem !important;
+  overflow-wrap: anywhere;
+}
+.concept-link {
+  margin-top: 2rem !important;
+}
+.visualizer-frame {
+  border-top: 1px solid var(--border);
+  padding-top: 1.2rem;
+}
+.visualizer-frame > header {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+.visualizer-frame > header h2,
+.math-note h2 {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--text);
+}
+.visualizer-frame > header p {
+  margin: 0.5rem 0 0;
+  color: var(--muted);
+  font-size: 0.68rem;
+  line-height: 1.6;
+}
+.text-button {
+  border: 0;
+  background: none;
+  padding: 0.2rem;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 0.7rem;
+  align-self: flex-start;
+}
+.text-button:hover {
+  color: var(--accent-text);
+}
+.visualizer-viewport {
+  width: 100%;
+  min-height: 25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-soft);
+}
+.coordinate-plane {
+  display: block;
+  width: 100%;
+  max-height: 34rem;
+  touch-action: none;
+  overflow: visible;
+}
+.grid-lines line {
+  stroke: var(--border);
+  stroke-width: 0.7;
+}
+.axes line {
+  stroke: var(--muted);
+  stroke-width: 1.2;
+}
+.axes text {
+  fill: var(--faint);
+  font-size: 10px;
+  text-anchor: middle;
+}
+.axes circle {
+  fill: var(--text);
+}
+.vector-arrow {
+  color: var(--blue);
+}
+.vector-arrow.selected {
+  color: var(--accent);
+}
+.vector-arrow.muted {
+  color: var(--muted);
+  opacity: 0.72;
+}
+.vector-arrow line {
+  stroke: currentColor;
+  stroke-width: 3;
+  vector-effect: non-scaling-stroke;
+}
+.vector-arrow path {
+  fill: currentColor;
+}
+.vector-arrow text {
+  fill: currentColor;
+  font-size: 13px;
+  font-weight: 600;
+}
+.projection-lines line {
+  stroke: var(--faint);
+  stroke-width: 1;
+  stroke-dasharray: 4 5;
+}
+.draggable-point {
+  fill: var(--accent);
+  stroke: var(--surface);
+  stroke-width: 3;
+  cursor: grab;
+  vector-effect: non-scaling-stroke;
+}
+.draggable-point:focus {
+  outline: none;
+  stroke: var(--blue);
+  stroke-width: 5;
+}
+.draggable-point:active {
+  cursor: grabbing;
+}
+.visualizer-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 1.5rem 2.5rem;
+  border-bottom: 1px solid var(--border);
+  padding: 1.5rem 0;
+}
+.vector-controls {
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.vector-controls legend {
+  width: 100%;
+  margin-bottom: 0.55rem;
+  color: var(--muted);
+  font-size: 0.68rem;
+}
+.numeric-control {
+  display: grid;
+  grid-template-columns: auto 4.5rem;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--muted);
+  font-size: 0.68rem;
+}
+.numeric-control input {
+  width: 4.5rem;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  padding: 0.35rem 0.2rem;
+  border-radius: 0;
+}
+.visualizer-readout {
+  padding: 1.3rem 0;
+  color: var(--muted);
+  font-size: 0.7rem;
+}
+.readout-grid,
+.experiment-results {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem 2rem;
+}
+.readout-grid span,
+.experiment-results span {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.readout-grid b,
+.experiment-results b {
+  color: var(--text);
+  font-weight: 400;
+  text-align: right;
+}
+.math-note {
+  max-width: 38rem;
+}
+.math-note p {
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.8;
+}
+.formula-list {
+  gap: 0;
+}
+.formula-list section {
+  display: grid;
+  grid-template-columns: 12rem 1fr;
+  padding: 2rem 0;
+  border-top: 1px solid var(--border);
+}
+.formula-list span {
+  color: var(--muted);
+  font-size: 0.68rem;
+}
+.formula-list p {
+  margin: 0 0 0.7rem;
+  font-size: 0.88rem;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+.code-block {
+  margin: 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-soft);
+}
+.code-block figcaption {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.65rem;
+}
+.code-block button {
+  border: 0;
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+}
+.code-block button:hover {
+  color: var(--text);
+}
+.code-block pre {
+  margin: 0;
+  padding: 1.5rem;
+  overflow: auto;
+  color: var(--text);
+  font-size: 0.78rem;
+  line-height: 1.7;
+}
+@media (max-width: 720px) {
+  .vector-lesson-content {
+    margin-top: 3rem;
+  }
+  .lesson-view {
+    gap: 3.5rem;
+  }
+  .visualizer-viewport {
+    min-height: 15rem;
+  }
+  .visualizer-controls {
+    align-items: start;
+    flex-direction: column;
+  }
+  .vector-controls {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  .numeric-control {
+    grid-template-columns: 1fr 5rem;
+    width: 100%;
+  }
+  .numeric-control input {
+    width: 5rem;
+  }
+  .readout-grid,
+  .experiment-results {
+    grid-template-columns: 1fr;
+  }
+  .formula-list section {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .concept-line {
+    gap: 0.5rem;
+  }
+  .concept-line span:nth-child(2) {
+    font-size: 0.7rem;
+  }
+  .coordinate-plane {
+    min-width: 0;
+  }
+  .code-block pre {
+    font-size: 0.68rem;
+    padding: 1rem;
+  }
+}
 * {
   box-sizing: border-box;
 }

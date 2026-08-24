@@ -51,4 +51,6 @@ The architecture is open for review, but the curriculum and contribution workflo
 3. Add reusable visualization and experiment primitives.
 4. Expand local progress and accessibility testing.
 
+Visualization and upstream-integration conventions are documented in `docs/visualization-sdk.md` and `docs/upstream-integration.md`. Integrated educational modules must not depend on the upstream demo or upstream website remaining online.
+
 Licensed under the Apache License 2.0. Third-party components and modifications will be recorded in `THIRD_PARTY_NOTICES.md`.

@@ -1,9 +1,12 @@
-import { useState } from 'react'
-
 const tabs = ['intuition', 'visual', 'math', 'code', 'experiment'] as const
-
-export function LessonTabs() {
-  const [active, setActive] = useState<(typeof tabs)[number]>('intuition')
+export type LessonTab = (typeof tabs)[number]
+export function LessonTabs({
+  active,
+  onChange,
+}: {
+  active: LessonTab
+  onChange: (tab: LessonTab) => void
+}) {
   return (
     <div className="lesson-tabs" role="tablist" aria-label="Lesson views">
       {tabs.map((tab) => (
@@ -11,7 +14,7 @@ export function LessonTabs() {
           key={tab}
           role="tab"
           aria-selected={active === tab}
-          onClick={() => setActive(tab)}
+          onClick={() => onChange(tab)}
         >
           {tab}
         </button>
