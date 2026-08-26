@@ -1,0 +1,11 @@
+{
+  "project": "Transformer Explainer",
+  "repository": "https://github.com/poloclub/transformer-explainer",
+  "commit": "bfe50afba10b9b560b84143ee1107d977defa74f",
+  "license": "MIT",
+  "codeApproved": true,
+  "assetsApproved": false,
+  "dataApproved": false,
+  "weightsApproved": false,
+  "integration": "port"
+}

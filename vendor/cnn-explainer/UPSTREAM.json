@@ -1,0 +1,11 @@
+{
+  "project": "CNN Explainer",
+  "repository": "https://github.com/poloclub/cnn-explainer",
+  "commit": "d0971f9447ed9806022a3d47587b62394682bc51",
+  "license": "MIT",
+  "codeApproved": true,
+  "assetsApproved": false,
+  "dataApproved": false,
+  "weightsApproved": false,
+  "integration": "port"
+}

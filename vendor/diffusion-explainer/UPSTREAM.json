@@ -1,0 +1,11 @@
+{
+  "project": "Diffusion Explainer",
+  "repository": "https://github.com/poloclub/diffusion-explainer",
+  "commit": "0820016ce908a8e66619b7a1c9369af1498160d6",
+  "license": "MIT",
+  "codeApproved": true,
+  "assetsApproved": false,
+  "dataApproved": false,
+  "weightsApproved": false,
+  "integration": "port"
+}

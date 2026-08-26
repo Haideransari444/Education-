@@ -1,0 +1,11 @@
+{
+  "project": "TensorFlow Playground",
+  "repository": "https://github.com/tensorflow/playground",
+  "commit": "02469bd3751764b20486015d4202b792af5362a6",
+  "license": "Apache-2.0",
+  "codeApproved": true,
+  "assetsApproved": false,
+  "dataApproved": false,
+  "weightsApproved": false,
+  "integration": "port"
+}

@@ -1,0 +1,11 @@
+{
+  "project": "GAN Lab",
+  "repository": "https://github.com/poloclub/ganlab",
+  "commit": "09073e8d8c05ff572e287ba5e69007b3fb9101cd",
+  "license": "Apache-2.0",
+  "codeApproved": true,
+  "assetsApproved": false,
+  "dataApproved": false,
+  "weightsApproved": false,
+  "integration": "port"
+}
