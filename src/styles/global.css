@@ -23,6 +23,429 @@
   text-rendering: optimizeLegibility;
 }
 
+/* Open-source visualizer integrations */
+:root {
+  --integration-blue: #77a8ff;
+  --integration-gold: #e6b85c;
+}
+.integration-lesson {
+  min-width: 0;
+}
+.integration-lesson > section > p:not(.block-label),
+.integration-lesson .worked-example p,
+.upstream-credit p {
+  max-width: 48rem;
+  color: var(--muted);
+  line-height: 1.8;
+}
+.visualizer-loading,
+.integration-error {
+  min-height: 16rem;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 3rem 0;
+  color: var(--muted);
+}
+.integration-error button,
+.transport-controls button,
+.transformer-stage-controls button,
+.token-selector button {
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  padding: 0.55rem 0.85rem;
+  cursor: pointer;
+}
+.integration-error button:hover,
+.transport-controls button:hover,
+.transformer-stage-controls button:hover,
+.transformer-stage-controls button.active,
+.token-selector button[aria-pressed='true'] {
+  border-color: var(--text);
+}
+.integration-controls {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(8rem, 1fr));
+  gap: 1.1rem 1.5rem;
+  width: 100%;
+}
+.integration-controls.compact {
+  grid-template-columns: repeat(3, minmax(9rem, 1fr));
+}
+.integration-controls label {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--muted);
+  font-size: 0.68rem;
+}
+.integration-controls label > :first-child:not(output),
+.integration-controls select {
+  grid-column: 1 / -1;
+}
+.integration-controls select,
+.feature-picker select,
+.challenge select,
+.challenge input {
+  min-width: 0;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  border-radius: 0;
+  background: var(--bg);
+  color: var(--text);
+  padding: 0.55rem 0;
+}
+.integration-controls input[type='range'] {
+  min-width: 0;
+  accent-color: var(--text);
+}
+.integration-controls output {
+  color: var(--text);
+}
+.transport-controls {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+}
+.transport-controls button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+.playground-layout {
+  display: grid;
+  grid-template-columns: minmax(12rem, 21rem) minmax(12rem, 1fr);
+  align-items: center;
+  gap: 3rem;
+  width: 100%;
+}
+.decision-boundary {
+  width: 100%;
+  max-width: 21rem;
+  border: 1px solid var(--border);
+}
+.network-diagram {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1rem;
+  min-width: 0;
+}
+.network-diagram > div {
+  display: grid;
+  justify-items: center;
+  gap: 0.45rem;
+}
+.network-diagram span {
+  min-height: 2rem;
+  color: var(--muted);
+  font-size: 0.58rem;
+  text-align: center;
+}
+.network-diagram i {
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid var(--integration-blue);
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--integration-blue) 22%, transparent);
+}
+.feature-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  border: 1px solid var(--border);
+  padding: 1rem;
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+.feature-picker legend {
+  padding: 0 0.5rem;
+}
+.feature-picker label {
+  display: flex;
+  gap: 0.4rem;
+}
+.cnn-pipeline,
+.diffusion-pipeline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  padding: 0.5rem;
+}
+.matrix-view,
+.diffusion-grid,
+.attention-matrix {
+  margin: 0;
+  min-width: 0;
+}
+.matrix-view figcaption,
+.diffusion-grid figcaption,
+.attention-matrix figcaption {
+  min-height: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--muted);
+  font-size: 0.62rem;
+}
+.matrix-view > div {
+  display: grid;
+  width: 8rem;
+  aspect-ratio: 1;
+}
+.matrix-view span {
+  display: grid;
+  place-items: center;
+  min-width: 1.3rem;
+  min-height: 1.3rem;
+  outline: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
+  color: var(--text);
+  font-size: 0.52rem;
+}
+.matrix-view span.selected {
+  outline: 2px solid var(--text);
+  outline-offset: -2px;
+}
+.gan-flow {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 2rem;
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+.gan-flow span {
+  border: 1px solid var(--border);
+  padding: 0.7rem;
+}
+.gan-flow .real-flow {
+  border-color: var(--integration-gold);
+}
+.gan-plot {
+  width: min(100%, 30rem);
+  border: 1px solid var(--border);
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+.gan-plot .decision-line {
+  stroke: var(--muted);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 4;
+}
+.gan-plot .real-point {
+  fill: var(--integration-gold);
+  stroke: var(--bg);
+}
+.gan-plot .fake-point {
+  fill: none;
+  stroke: var(--integration-blue);
+  stroke-width: 1.8;
+}
+.transformer-stage-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+.transformer-stage-controls button {
+  color: var(--muted);
+  font-size: 0.64rem;
+}
+.token-flow,
+.token-selector {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+.token-flow span {
+  border-bottom: 1px solid var(--border);
+  padding: 0.65rem 1rem;
+}
+.token-flow span.active {
+  border-color: var(--integration-blue);
+  color: var(--integration-blue);
+}
+.token-selector button {
+  padding: 0.35rem 0.55rem;
+  font-size: 0.62rem;
+}
+.transformer-stage {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 14rem;
+}
+.qkv-view {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  width: 100%;
+}
+.attention-matrix > div > section {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.attention-matrix section b {
+  min-width: 2.5rem;
+  font-size: 0.62rem;
+}
+.attention-matrix section span {
+  display: grid;
+  place-items: center;
+  width: 3.1rem;
+  height: 3.1rem;
+  background: var(--integration-blue);
+  font-size: 0.62rem;
+}
+.matrix-columns {
+  display: flex;
+  gap: 0.35rem;
+  margin-left: 2.85rem;
+}
+.matrix-columns span {
+  width: 3.1rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.58rem;
+}
+.residual-view {
+  display: flex;
+  align-items: end;
+  gap: 0.7rem;
+  color: var(--muted);
+  font-size: 0.68rem;
+}
+.residual-view i {
+  width: 1.5rem;
+  min-height: 0.6rem;
+  background: var(--integration-blue);
+}
+.logits-view {
+  width: min(100%, 28rem);
+}
+.logits-view > div {
+  display: grid;
+  grid-template-columns: 5rem 1fr 3.5rem;
+  align-items: center;
+  gap: 0.7rem;
+  margin: 0.8rem 0;
+  font-size: 0.7rem;
+}
+.logits-view i {
+  height: 0.65rem;
+  background: var(--integration-blue);
+}
+.diffusion-grid {
+  flex: 0 0 11rem;
+}
+.diffusion-grid svg {
+  width: 100%;
+  border: 1px solid var(--border);
+}
+.unet-concept {
+  display: grid;
+  gap: 0.55rem;
+  flex: 0 0 10rem;
+  border: 1px solid var(--border);
+  padding: 1rem;
+  color: var(--muted);
+  font-size: 0.65rem;
+}
+.upstream-credit {
+  border-top: 1px solid var(--border);
+  padding-top: 2rem;
+}
+.upstream-credit a {
+  color: var(--text);
+}
+.upstream-credit summary {
+  width: fit-content;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 0.68rem;
+}
+.upstream-credit dl > div {
+  display: grid;
+  grid-template-columns: 9rem minmax(0, 1fr);
+  gap: 1rem;
+  margin: 0.6rem 0;
+  font-size: 0.62rem;
+}
+.upstream-credit dt {
+  color: var(--muted);
+}
+.upstream-credit dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.integration-lesson :is(button, input, select, summary, a):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .integration-lesson *,
+  .integration-lesson *::before,
+  .integration-lesson *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+@media (max-width: 720px) {
+  .integration-controls,
+  .integration-controls.compact,
+  .playground-layout,
+  .qkv-view {
+    grid-template-columns: 1fr;
+  }
+  .playground-layout {
+    gap: 2rem;
+  }
+  .decision-boundary {
+    justify-self: center;
+  }
+  .network-diagram {
+    overflow-x: auto;
+    justify-content: start;
+    padding-bottom: 0.5rem;
+  }
+  .network-diagram > div {
+    min-width: 4rem;
+  }
+  .cnn-pipeline,
+  .diffusion-pipeline {
+    justify-content: start;
+    scroll-snap-type: x proximity;
+  }
+  .cnn-pipeline > *,
+  .diffusion-pipeline > * {
+    scroll-snap-align: center;
+  }
+  .matrix-view > div {
+    width: 7rem;
+  }
+  .transformer-stage-controls {
+    flex-wrap: nowrap;
+    width: 100%;
+    overflow-x: auto;
+  }
+  .transformer-stage-controls button {
+    flex: 0 0 auto;
+  }
+  .upstream-credit dl > div {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+  }
+}
+
 /* Visualization SDK */
 .vector-lesson-content {
   max-width: 64rem;
@@ -1197,5 +1620,26 @@ p {
   }
   .vector-controls {
     max-width: 100%;
+  }
+}
+
+/* Integration frames contain multiple stacked controls; override the vector
+   canvas' centering flex layout and contain their internal mobile scrollers. */
+.integration-lesson .visualizer-frame,
+.integration-lesson .visualizer-viewport,
+.integration-lesson .transformer-stage {
+  min-width: 0;
+  max-width: 100%;
+}
+.integration-lesson .visualizer-frame {
+  overflow: hidden;
+}
+.integration-lesson .visualizer-viewport {
+  display: block;
+  padding: 1.5rem;
+}
+@media (max-width: 720px) {
+  .integration-lesson .visualizer-viewport {
+    padding: 1rem;
   }
 }

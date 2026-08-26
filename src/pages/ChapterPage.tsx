@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { getChapter, getTopic } from '../curriculum/topics'
 import { ChapterContent } from '../lessons/foundations/vectors/ChapterContent'
+import { IntegrationEntry } from '../integrations/IntegrationEntry'
 import { isChapterComplete, setChapterComplete } from '../storage/topicProgress'
 import { NotFoundPage } from './NotFoundPage'
 
@@ -21,10 +22,11 @@ export function ChapterPage() {
       <article className="chapter-page planned-chapter">
         <header>
           <Link className="chapter-back" to={`/learn/${topic.id}`}>
-            ← all vectors chapters
+            ← all {topic.title.toLowerCase()} chapters
           </Link>
           <p className="eyebrow">
-            vectors / {String(chapter.number).padStart(2, '0')}
+            {topic.title.toLowerCase()} /{' '}
+            {String(chapter.number).padStart(2, '0')}
           </p>
           <h1>{chapter.title.toLowerCase()}</h1>
           <p>{chapter.description}</p>
@@ -41,10 +43,11 @@ export function ChapterPage() {
     <article className="chapter-page">
       <header>
         <Link className="chapter-back" to={`/learn/${topic.id}`}>
-          ← all vectors chapters
+          ← all {topic.title.toLowerCase()} chapters
         </Link>
         <p className="eyebrow">
-          vectors / {String(chapter.number).padStart(2, '0')}
+          {topic.title.toLowerCase()} /{' '}
+          {String(chapter.number).padStart(2, '0')}
         </p>
         <h1>{chapter.title.toLowerCase()}</h1>
         <p>{chapter.description}</p>
@@ -52,7 +55,11 @@ export function ChapterPage() {
           {chapter.difficulty} · ~{chapter.estimatedMinutes} min
         </span>
       </header>
-      <ChapterContent chapterId={chapter.id} />
+      {topic.id === 'vectors' ? (
+        <ChapterContent chapterId={chapter.id} />
+      ) : (
+        <IntegrationEntry topicId={topic.id} chapterId={chapter.id} />
+      )}
       <footer className="chapter-footer">
         <button
           className={complete ? 'complete-button complete' : 'complete-button'}
@@ -87,7 +94,7 @@ function ChapterNavigation({
           </Link>
         )}
       </span>
-      <Link to={`/learn/${topicId}`}>vectors</Link>
+      <Link to={`/learn/${topicId}`}>chapter list</Link>
       <span>
         {next && (
           <Link to={`/learn/${topicId}/${next.id}`}>

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useLocation, useParams } from 'react-router-dom'
 import { getTopic } from '../curriculum/topics'
 import {
   getCompletedChapters,
@@ -9,7 +9,9 @@ import { NotFoundPage } from './NotFoundPage'
 
 export function TopicOverviewPage() {
   const { topicId = '' } = useParams()
-  const resolvedTopicId = topicId || 'vectors'
+  const { pathname } = useLocation()
+  const pathTopicId = pathname.match(/^\/learn\/([^/]+)$/)?.[1]
+  const resolvedTopicId = topicId || pathTopicId || 'vectors'
   const topic = getTopic(resolvedTopicId)
   const [completed] = useState<string[]>(() =>
     getCompletedChapters(resolvedTopicId),
@@ -18,12 +20,12 @@ export function TopicOverviewPage() {
   return (
     <div className="topic-overview">
       <header>
-        <p className="eyebrow">01 / foundations</p>
+        <p className="eyebrow">learning path / {topic.category}</p>
         <h1>{topic.title.toLowerCase()}</h1>
         <p>{topic.description}</p>
         <div className="topic-meta-line">
           <span>{topic.chapters.length} chapters</span>
-          <span>beginner → advanced</span>
+          <span>flagship → deeper chapters</span>
         </div>
       </header>
       <section className="topic-progress" aria-label="Topic progress">

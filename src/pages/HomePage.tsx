@@ -3,6 +3,15 @@ import { CategorySection } from '../components/lesson/CategorySection'
 import { categories } from '../curriculum/curriculum'
 
 export function HomePage() {
+  const featuredCategories = categories.filter((category) =>
+    [
+      'foundations',
+      'neural-networks',
+      'computer-vision',
+      'generative-ai',
+      'transformers',
+    ].includes(category.id),
+  )
   return (
     <div className="page home-page">
       <section className="intro">
@@ -21,7 +30,7 @@ export function HomePage() {
         </Link>
       </section>
       <div className="curriculum-grid">
-        {categories.slice(0, 4).map((category) => (
+        {featuredCategories.map((category) => (
           <CategorySection key={category.id} category={category} />
         ))}
       </div>
