@@ -40,6 +40,7 @@ describe('routing', () => {
         name: /understand artificial intelligence/i,
       }),
     ).toBeInTheDocument()
+    expect(screen.getByText('open-source contributors')).toBeInTheDocument()
   })
   it('renders explore', () => {
     renderRoute('/explore')

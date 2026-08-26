@@ -842,6 +842,39 @@ a {
 .search-trigger:hover {
   color: var(--text);
 }
+.contributor-callout {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: baseline;
+  gap: 1rem;
+  width: min(calc(100% - 3rem), var(--content));
+  margin: 0 auto;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 1.4rem 0 1.6rem;
+}
+.contributor-callout > span {
+  color: var(--accent);
+  font-size: clamp(0.65rem, 1vw, 0.8rem);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.contributor-callout strong {
+  color: var(--text);
+  font-size: clamp(1.35rem, 4vw, 3.6rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.065em;
+  text-transform: uppercase;
+}
+.contributor-callout a {
+  color: var(--muted);
+  font-size: 0.68rem;
+  white-space: nowrap;
+}
+.contributor-callout a:hover {
+  color: var(--text);
+}
 .nav-actions {
   display: flex;
   gap: 1.4rem;
@@ -1210,6 +1243,15 @@ p {
   }
   .nav-actions a {
     display: none;
+  }
+  .contributor-callout {
+    grid-template-columns: 1fr;
+    gap: 0.55rem;
+    width: calc(100% - 2rem);
+    padding: 1.1rem 0 1.25rem;
+  }
+  .contributor-callout strong {
+    font-size: clamp(1.55rem, 9vw, 2.3rem);
   }
   .page,
   .lesson-page {

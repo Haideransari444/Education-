@@ -15,6 +15,20 @@ export function AppShell() {
         onSearch={() => setSearchOpen(true)}
         quiet={pathname.startsWith('/learn/')}
       />
+      <aside
+        className="contributor-callout"
+        aria-label="Contributor announcement"
+      >
+        <span>looking for</span>
+        <strong>open-source contributors</strong>
+        <a
+          href="https://github.com/Haideransari444/Education-"
+          target="_blank"
+          rel="noreferrer"
+        >
+          contribute on github <span aria-hidden="true">→</span>
+        </a>
+      </aside>
       <main id="main-content">
         <Outlet />
       </main>
