@@ -6,7 +6,7 @@ A free and open-source interactive platform for understanding artificial intelli
 
 ## Current status
 
-The project currently provides the technical foundation and visual shell: a data-driven curriculum, lesson shell, command palette, local progress storage abstraction, responsive interface, and GitHub Pages deployment. It does not yet contain finished educational lessons or AI visualizers.
+The project currently provides a complete Vectors Part I path and five locally bundled flagship visualizers for neural-network training, convolution, GAN dynamics, transformer attention, and diffusion. The wider curriculum remains early and intentionally marks unfinished chapters as planned.
 
 ## Philosophy
 
@@ -52,5 +52,7 @@ The architecture is open for review, but the curriculum and contribution workflo
 4. Expand local progress and accessibility testing.
 
 Visualization and upstream-integration conventions are documented in `docs/visualization-sdk.md` and `docs/upstream-integration.md`. Integrated educational modules must not depend on the upstream demo or upstream website remaining online.
+
+AI Core selectively reuses and credits permissively licensed open-source educational systems, then adapts them into one curriculum, interaction language, accessibility layer, and responsive design. Exact provenance and conservative asset/data/model decisions are documented in `docs/integrations.md`, `THIRD_PARTY_NOTICES.md`, and `vendor/`.
 
 Licensed under the Apache License 2.0. Third-party components and modifications will be recorded in `THIRD_PARTY_NOTICES.md`.

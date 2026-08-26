@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { vectorChapters } from '../curriculum/topics'
+import { topics, vectorChapters } from '../curriculum/topics'
 describe('vectors topic registry', () => {
   it('registers 26 uniquely identified and numbered chapters', () => {
     expect(vectorChapters).toHaveLength(26)
@@ -22,5 +22,18 @@ describe('vectors topic registry', () => {
         .flatMap((x) => x.prerequisites ?? [])
         .every((id) => ids.has(id)),
     ).toBe(true)
+  })
+})
+
+describe('integrated topic registry', () => {
+  it('registers five additional unique topic IDs', () => {
+    expect(topics).toHaveLength(6)
+    expect(new Set(topics.map((topic) => topic.id)).size).toBe(6)
+  })
+  it('exposes exactly one available flagship in each integrated topic', () => {
+    for (const topic of topics.filter((item) => item.id !== 'vectors'))
+      expect(
+        topic.chapters.filter((chapter) => chapter.status === 'available'),
+      ).toHaveLength(1)
   })
 })

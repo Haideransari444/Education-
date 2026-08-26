@@ -19,6 +19,10 @@ const renderRoute = (path: string) =>
               { path: '/', element: <HomePage /> },
               { path: '/explore', element: <ExplorePage /> },
               { path: '/learn/vectors', element: <TopicOverviewPage /> },
+              {
+                path: '/learn/transformer',
+                element: <TopicOverviewPage />,
+              },
               { path: '/learn/:lessonId', element: <LessonPage /> },
               { path: '*', element: <NotFoundPage /> },
             ],
@@ -45,6 +49,13 @@ describe('routing', () => {
     renderRoute('/learn/vectors')
     expect(screen.getByRole('heading', { name: 'vectors' })).toBeInTheDocument()
     expect(screen.getByText('26 chapters')).toBeInTheDocument()
+  })
+  it('renders an integrated topic overview', () => {
+    renderRoute('/learn/transformer')
+    expect(
+      screen.getByRole('heading', { name: 'transformer' }),
+    ).toBeInTheDocument()
+    expect(screen.getByText('3 chapters')).toBeInTheDocument()
   })
   it('renders 404 for unknown routes', () => {
     renderRoute('/missing')

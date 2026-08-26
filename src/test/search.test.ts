@@ -17,4 +17,15 @@ describe('topic and chapter search', () => {
       title: 'Cosine similarity',
       context: 'Vectors',
     }))
+  it('finds integrated concepts and common acronyms', () => {
+    expect(searchCurriculum('qkv')[0]).toMatchObject({
+      title: 'Transformer',
+    })
+    expect(
+      searchCurriculum('denoising').map((result) => result.title),
+    ).toContain('Forward noise and reverse denoising')
+    expect(
+      searchCurriculum('feature map').map((result) => result.context),
+    ).toContain('Convolutional Neural Networks')
+  })
 })
